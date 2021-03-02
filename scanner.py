@@ -1,6 +1,5 @@
 import requests
 import hashlib
-import json
 
 from credentials import API_KEY
 

@@ -18,7 +18,6 @@ response = requests.get('https://www.virustotal.com/api/v3/files/'+hash, headers
 
 resp = json.loads(response.content.decode('utf-8'))
 
-
 print(resp['data']['attributes']['trid'][0])
 print(resp['data']['attributes']['trid'][1])
 
@@ -27,3 +26,5 @@ print(resp['data']['attributes']['last_modification_date'])
 print(resp['data']['attributes']['type_tag'])
 print(resp['data']['attributes']['times_submitted'])
 print(resp['data']['attributes']['size'])
+
+print(resp['data']['attributes']['last_analysis_results'])

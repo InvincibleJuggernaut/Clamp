@@ -27,4 +27,6 @@ print(resp['data']['attributes']['type_tag'])
 print(resp['data']['attributes']['times_submitted'])
 print(resp['data']['attributes']['size'])
 
-print(resp['data']['attributes']['last_analysis_results'])
+
+for x in resp['data']['attributes']['last_analysis_results']:
+    print(x, resp['data']['attributes']['last_analysis_results'][x]['category'])

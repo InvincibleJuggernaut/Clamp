@@ -18,15 +18,20 @@ response = requests.get('https://www.virustotal.com/api/v3/files/'+hash, headers
 
 resp = json.loads(response.content.decode('utf-8'))
 
-print(resp['data']['attributes']['trid'][0])
-print(resp['data']['attributes']['trid'][1])
+for x in resp['data']['attributes']['trid']:
+    file_type=x['file_type']
+    probability=x['probability']
+    print(str(file_type) + " - " + str(probability))
 
-print(resp['data']['attributes']['names'])
-print(resp['data']['attributes']['last_modification_date'])
-print(resp['data']['attributes']['type_tag'])
-print(resp['data']['attributes']['times_submitted'])
-print(resp['data']['attributes']['size'])
+size = resp['data']['attributes']['size']
+times_submitted = resp['data']['attributes']['times_submitted']
+last_modification_date = resp['data']['attributes']['last_modification_date']
+name = resp['data']['attributes']['names']
 
+print("Name : ", name)
+print("Size : ", size)
+print("Times submitted : ", times_submitted)
+print("Last modification date : ", last_modification_date)
 
 for x in resp['data']['attributes']['last_analysis_results']:
     engine_name = x

@@ -29,4 +29,9 @@ print(resp['data']['attributes']['size'])
 
 
 for x in resp['data']['attributes']['last_analysis_results']:
-    print(x, resp['data']['attributes']['last_analysis_results'][x]['category'])
+    engine_name = x
+    category = resp['data']['attributes']['last_analysis_results'][x]['category']
+    result = resp['data']['attributes']['last_analysis_results'][x]['result']
+    print(str(engine_name) +" - "+ str(category) +" - "+ str(result))
+
+

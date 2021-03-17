@@ -27,9 +27,12 @@ def search_vt(hash):
         return resp
 
 def check_history(resp):
-    if(resp['error']['code']=='NotFoundError'):
-        status = "NoHistory"
-        return status
+    try:
+        if(resp['error']['code']=='NotFoundError'):
+            status = "NoHistory"
+            return status
+    except:
+        return True
 
 def get_stats(response):  
     for x in resp['data']['attributes']['trid']:
@@ -54,9 +57,6 @@ def get_stats(response):
         print(str(engine_name) +" - "+ str(category) +" - "+ str(result))
 
 
-hash = find_hash(file)
-resp = search_vt(hash)
-if(resp =="NoHistory"):
-    print("Never seen this file in the wild before !")
-else:
-    get_stats(resp)
+#hash = find_hash(file)
+#resp = search_vt(hash)
+#get_stats(resp)

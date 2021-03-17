@@ -19,7 +19,17 @@ def find_hash(file):
 def search_vt(hash):
     response = requests.get('https://www.virustotal.com/api/v3/files/'+hash, headers=headers)
     resp = json.loads(response.content.decode('utf-8'))
-    return resp
+    status = check_history(resp)
+    if(status == "NoHistory"):
+        resp = "NoHistory"
+        return resp
+    else:
+        return resp
+
+def check_history(resp):
+    if(resp['error']['code']=='NotFoundError'):
+        status = "NoHistory"
+        return status
 
 def get_stats(response):  
     for x in resp['data']['attributes']['trid']:
@@ -44,3 +54,9 @@ def get_stats(response):
         print(str(engine_name) +" - "+ str(category) +" - "+ str(result))
 
 
+hash = find_hash(file)
+resp = search_vt(hash)
+if(resp =="NoHistory"):
+    print("Never seen this file in the wild before !")
+else:
+    get_stats(resp)

@@ -6,8 +6,6 @@ def extract(path):
     data = []
     data.append(pe.OPTIONAL_HEADER.DllCharacteristics)
     data.append(pe.FILE_HEADER.Machine)
-    #entropy = list(map(lambda x:x.get_entropy(), pe.sections))
-    #data.append(statistics.mean(entropy))
     data.append(max(entropy))
     data.append(pe.FILE_HEADER.Characteristics)
     data.append(pe.OPTIONAL_HEADER.Subsystem)

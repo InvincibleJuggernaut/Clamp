@@ -49,6 +49,6 @@ def get_stats(resp):
         category = resp['data']['attributes']['last_analysis_results'][x]['category']
         result = resp['data']['attributes']['last_analysis_results'][x]['result']
         if(category!='undetected' and category!='type-unsupported' and category!='timeout' and category!='failure'):
-            print(str(engine_name) +" - "+ Fore.RED + str(category) + Style.RESET_ALL+ " - "+ str(result))
+            print(str(engine_name).ljust(25) +" - "+ Fore.RED + str(category).ljust(20) + Style.RESET_ALL+ " - "+ str(result))
         else:
-            print(str(engine_name) +" - "+ str(category) +" - "+ str(result))
+            print(str(engine_name).ljust(25) +" - "+ str(category).ljust(20) +" - "+ str(result))

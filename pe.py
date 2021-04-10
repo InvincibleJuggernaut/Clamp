@@ -19,4 +19,7 @@ def extract(path):
     data.append(pe.OPTIONAL_HEADER.MajorSubsystemVersion)
     data.append(SectionsMinEntropy)    
     data.append(pe.OPTIONAL_HEADER.MajorOperatingSystemVersion)
-    return data
+    attributes =[]
+    attributes.append(data)
+    return pd.DataFrame(attributes)
+

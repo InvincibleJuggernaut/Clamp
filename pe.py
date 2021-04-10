@@ -20,8 +20,3 @@ def extract(path):
     data.append(SectionsMinEntropy)    
     data.append(pe.OPTIONAL_HEADER.MajorOperatingSystemVersion)
     return data
-
-attributes = extract('arduino.exe')
-df = pd.DataFrame(attributes)
-print(type(df))
-

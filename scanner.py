@@ -1,14 +1,13 @@
 import requests
 import hashlib
 import json
+from colorama import init, Fore, Back, Style
 
 from credentials import API_KEY
 
 headers = {
     'x-apikey': API_KEY,
 }
-
-file = ""
 
 def find_hash(file):
     with open(file, "rb") as f:
@@ -19,22 +18,15 @@ def find_hash(file):
 def search_vt(hash):
     response = requests.get('https://www.virustotal.com/api/v3/files/'+hash, headers=headers)
     resp = json.loads(response.content.decode('utf-8'))
-    status = check_history(resp)
-    if(status == "NoHistory"):
-        resp = "NoHistory"
-        return resp
-    else:
-        return resp
-
-def check_history(resp):
     try:
         if(resp['error']['code']=='NotFoundError'):
-            status = "NoHistory"
-            return status
+            resp = "NoHistory"
     except:
-        return True
+        resp = resp
+    return resp
 
-def get_stats(response):  
+def get_stats(resp):  
+    print("Probabilities for file type : ")
     for x in resp['data']['attributes']['trid']:
         file_type=x['file_type']
         probability=x['probability']
@@ -45,18 +37,18 @@ def get_stats(response):
     last_modification_date = resp['data']['attributes']['last_modification_date']
     name = resp['data']['attributes']['names']
 
+    print()
     print("Name : ", name)
     print("Size : ", size)
     print("Times submitted : ", times_submitted)
     print("Last modification date : ", last_modification_date)
+    print()
 
     for x in resp['data']['attributes']['last_analysis_results']:
         engine_name = x
         category = resp['data']['attributes']['last_analysis_results'][x]['category']
         result = resp['data']['attributes']['last_analysis_results'][x]['result']
-        print(str(engine_name) +" - "+ str(category) +" - "+ str(result))
-
-
-#hash = find_hash(file)
-#resp = search_vt(hash)
-#get_stats(resp)
+        if(category!='undetected' and category!='type-unsupported' and category!='timeout' and category!='failure'):
+            print(str(engine_name) +" - "+ Fore.RED + str(category) + Style.RESET_ALL+ " - "+ str(result))
+        else:
+            print(str(engine_name) +" - "+ str(category) +" - "+ str(result))

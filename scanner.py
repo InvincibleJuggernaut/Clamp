@@ -30,7 +30,7 @@ def get_stats(resp):
     for x in resp['data']['attributes']['trid']:
         file_type=x['file_type']
         probability=x['probability']
-        print(str(file_type) + " - " + str(probability))
+        print(" "+str(file_type) + " - " + str(probability)+"%")
 
     size = resp['data']['attributes']['size']
     times_submitted = resp['data']['attributes']['times_submitted']
@@ -38,10 +38,12 @@ def get_stats(resp):
     name = resp['data']['attributes']['names']
 
     print()
-    print("Name : ", name)
-    print("Size : ", size)
-    print("Times submitted : ", times_submitted)
-    print("Last modification date : ", last_modification_date)
+    print("Name : ")
+    for x in name:
+        print(" "+x)
+    print("\nSize : "+str(size)+" bytes")
+    print("\nTimes submitted : ", times_submitted)
+    print("\nLast modification date : ", last_modification_date)
     print()
 
     for x in resp['data']['attributes']['last_analysis_results']:
@@ -50,5 +52,7 @@ def get_stats(resp):
         result = resp['data']['attributes']['last_analysis_results'][x]['result']
         if(category!='undetected' and category!='type-unsupported' and category!='timeout' and category!='failure'):
             print(str(engine_name).ljust(25) +" - "+ Fore.RED + str(category).ljust(20) + Style.RESET_ALL+ " - "+ str(result))
+        elif(category =='undetected'):
+            print(str(engine_name).ljust(25) +" - "+ Fore.GREEN + str(category).ljust(20) + Style.RESET_ALL+ " - "+ str(result))
         else:
             print(str(engine_name).ljust(25) +" - "+ str(category).ljust(20) +" - "+ str(result))

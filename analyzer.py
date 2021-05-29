@@ -3,7 +3,7 @@ import numpy as np
 from pe import extract
 from scanner import find_hash, search_vt, get_stats
 
-file = ''
+file = 'arduino.exe'
 
 hash = find_hash(file)
 resp = search_vt(hash)
@@ -14,7 +14,6 @@ if(resp=="NoHistory"):
     model = pickle.load(open('model','rb'))
     attributes = extract(file)
     prediction = model.predict(attributes)
-    #print(prediction)
     x = np.argmax(prediction.round(), axis=0)
     if(x==0):
         print("File appears to be legitimate")

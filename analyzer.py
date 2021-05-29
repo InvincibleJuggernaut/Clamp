@@ -3,7 +3,7 @@ import numpy as np
 from pe import extract
 from scanner import find_hash, search_vt, get_stats
 
-file = 'arduino.exe'
+file = ''
 
 hash = find_hash(file)
 resp = search_vt(hash)

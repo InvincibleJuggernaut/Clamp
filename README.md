@@ -16,6 +16,9 @@
   <img src="Assets/Program flow.png">
   </p>
 
+<h2>Demo</h2>
+
+
 <h2>Remarks</h2>
 
 <p> Modern anti-virus and anti-malware solutions use a combination of mutliple methodologies in order to provide accurate diagnosis. Clamp is quite simply a basic implementation for detecting malware. It can't be used to replace the commercial grade anti-virus engines since it makes use of techniques that are rudimentary as well as not enough to account for all possible threats. </p>

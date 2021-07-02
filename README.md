@@ -18,6 +18,9 @@
 
 <h2>Demo</h2>
 
+<p align="center">
+<img src="Assets/Demo.gif">
+</p>
 
 <h2>Remarks</h2>
 

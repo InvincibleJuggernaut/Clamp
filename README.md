@@ -16,6 +16,27 @@
   <img src="Assets/Program flow.png">
   </p>
 
+<h2>Installation</h2>
+
+<ul>
+  <li>Clone this repository using</li>
+ 
+  ```
+  git clone https://github.com/InvincibleJuggernaut/Clamp.git
+  ```
+  
+  <li>Enter the downloaded directory using</li>
+  
+  ```
+  cd Clamp
+  ```
+  <li>Run the script using</li>
+ 
+  ```
+  python3 analyzer.py
+  ```
+  </ul>
+
 <h2>Demo</h2>
 
 <p align="center">

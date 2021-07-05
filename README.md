@@ -37,6 +37,8 @@
   ```
   </ul>
 
+<b>Note:</b> <i>This repository doesn't contain the trained machine learning model due to size constraints. Therefore, this program would only work if the file input by the user is recognized by VirusTotal. Incase the file is relatively new and has never been scanned with VirusTotal before, the program wouldn't move forward since it requires the ML model for the diagnosis.</i>
+
 <h2>Demo</h2>
 
 <p align="center">
